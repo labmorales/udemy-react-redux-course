@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SongList from '../components/SongList'
+import SongDetail from './SongDetail'
 
 export class App extends Component {
     render() {
@@ -9,6 +10,9 @@ export class App extends Component {
                     <div className="eight wide column">
                         <SongList />
                     </div>
+                    <div className="eight wide column">
+                        <SongDetail />
+                    </div>                    
                 </div>
             </div>
         )
