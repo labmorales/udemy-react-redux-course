@@ -1,0 +1,32 @@
+{
+  "streams": [
+    {
+      "title": "Canal banca",
+      "description": "Teste teste",
+      "id": 1
+    },
+    {
+      "title": "Canal banca 2",
+      "description": "Teste teste testeeeee",
+      "id": 2
+    },
+    {
+      "title": "Novo Stream de um user",
+      "description": "Descrição do user",
+      "userId": "106482422775349036176",
+      "id": 3
+    },
+    {
+      "title": "Teste 2",
+      "description": "Testawdadwd ad  adwa ",
+      "userId": "106482422775349036176",
+      "id": 4
+    },
+    {
+      "title": "Teste refatoração Bla Bla",
+      "description": "Teste descricao",
+      "userId": "106482422775349036176",
+      "id": 5
+    }
+  ]
+}
