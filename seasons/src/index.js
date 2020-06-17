@@ -1,49 +1,22 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import SeasonDisplay from './SeasonDisplay';
-import Loading from './Loading';
+import React from "react";
+import ReactDom from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
+import Loading from "./Loading";
+import useLocation from "./useLocation";
 
-class App extends React.Component {
+const App = () => {
+  const [lat, errorMessage] = useLocation();
 
-    state = { lat: null, errorMessage: ''};
+  let content;
+  if (errorMessage && !lat) {
+    content = <div>Error: {errorMessage}</div>;
+  } else if (!errorMessage && lat) {
+    content = <SeasonDisplay lat={lat} />;
+  } else {
+    content = <Loading message="Please accept geo request" />;
+  }
 
-    getCoordinates() {
-        navigator.geolocation.getCurrentPosition(
-            position => this.setState({lat: position.coords.latitude}),
-            err => this.setState({errorMessage: err.message })            
-        )
-    }
+  return <div className="border red">{content}</div>;
+};
 
-    componentDidMount(){        
-        this.getCoordinates();
-    }
-
-    componentDidUpdate(){
-        console.log('Componente atualizado');
-    }    
-
-    renderContent() {
-        if(this.state.errorMessage && !this.state.lat) {
-            return <div>Error: {this.state.errorMessage}</div>
-        }
-
-        if(!this.state.errorMessage && this.state.lat) {
-            return <SeasonDisplay lat={this.state.lat} />;
-        }
-
-        return (
-            <Loading message="Please accept geo request" />   
-        );        
-    }
-
-    render() {
-        return (
-            <div className="border red">
-                {this.renderContent()}
-            </div>
-        );        
-    }
-}
-
-
-ReactDom.render(<App />, document.querySelector('#root'));
+ReactDom.render(<App />, document.querySelector("#root"));
